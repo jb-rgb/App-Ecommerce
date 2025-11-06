@@ -49,6 +49,8 @@ import com.jorge.ecommerceappmvvm.ui.theme.Blue700
 
 @Composable
 fun LoginContent(navCrontroller: NavHostController, paddingValues: PaddingValues, vm: LoginViewModel = hiltViewModel()) {
+    val state = vm.state
+
     Box(modifier = Modifier) {
         Image(
             modifier = Modifier.fillMaxSize(),
@@ -104,9 +106,9 @@ fun LoginContent(navCrontroller: NavHostController, paddingValues: PaddingValues
                     )
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = vm.email,
+                        value = state.email,
                         onValueChange = {
-                            vm.email = it
+                            vm.onEmailInput(it)
                         },
                         label = "Email",
                         icon = Icons.Default.Email,
@@ -114,13 +116,14 @@ fun LoginContent(navCrontroller: NavHostController, paddingValues: PaddingValues
                     )
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = vm.password,
+                        value = state.password,
                         onValueChange = { text ->
-                            vm.password = text
+                            vm.onPasswordInput(text)
                         },
                         label = "Password",
                         icon = Icons.Default.Lock,
-                        keyboardType = KeyboardType.Password
+                        keyboardType = KeyboardType.Password,
+                        hideText = true
                     )
                     Spacer(modifier = Modifier.height(10.dp))
                     DefaultButton(
