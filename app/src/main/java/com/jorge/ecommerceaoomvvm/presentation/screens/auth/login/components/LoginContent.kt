@@ -24,6 +24,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -45,6 +49,9 @@ import com.jorge.ecommerceaoomvvm.ui.theme.Blue700
 
 @Composable
 fun LoginContent(navCrontroller: NavHostController, paddingValues: PaddingValues) {
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+
     Box(modifier = Modifier) {
         Image(
             modifier = Modifier.fillMaxSize(),
@@ -99,16 +106,20 @@ fun LoginContent(navCrontroller: NavHostController, paddingValues: PaddingValues
                     )
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "",
-                        onValueChange = {},
+                        value = email,
+                        onValueChange = {
+                            email = it
+                        },
                         label = "Email",
                         icon = Icons.Default.Email,
                         keyboardType = KeyboardType.Email
                     )
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "",
-                        onValueChange = {},
+                        value = password,
+                        onValueChange = { text ->
+                            password = text
+                        },
                         label = "Password",
                         icon = Icons.Default.Lock,
                         keyboardType = KeyboardType.Password
