@@ -16,14 +16,20 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,6 +42,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jorge.ecommerceaoomvvm.ui.theme.Blue500
+import com.jorge.ecommerceaoomvvm.ui.theme.Blue700
 import com.jorge.ecommerceaoomvvm.ui.theme.KotlinEcommerceMVVMTheme
 
 class MainActivity : ComponentActivity() {
@@ -97,7 +105,7 @@ fun LoginContent() {
             ) {
                 Column(
                     modifier = Modifier
-                        .padding(20.dp)
+                        .padding(top = 30.dp, end = 30.dp, start = 30.dp)
                 ) {
                     Text(
                         modifier = Modifier
@@ -107,24 +115,48 @@ fun LoginContent() {
                         fontSize = 20.sp,
                         color = Color.Black
                     )
-                    TextField(
+                    OutlinedTextField(
                         modifier = Modifier.fillMaxWidth(),
                         value = "",
                         onValueChange = {},
                         label = {
                             Text(text = "E-mail")
-                        }
+                        },
+                        leadingIcon = {
+                            Icon(
+                                imageVector = Icons.Default.Email,
+                                contentDescription = "Email Icon",
+                                tint = Blue500
+                            )
+                        },
+                        /*colors = TextFieldDefaults.colors(
+                            focusedContainerColor = Color.White,
+                            unfocusedContainerColor = Color.White
+                        )*/
                     )
-                    TextField(
+                    OutlinedTextField(
                         modifier = Modifier.fillMaxWidth(),
                         value = "",
                         onValueChange = {},
                         label = {
                             Text(text = "Password")
-                        }
+                        },
+                        leadingIcon = {
+                            Icon(
+                                imageVector = Icons.Default.Lock,
+                                contentDescription = "Password Icon",
+                                tint = Blue500
+                            )
+                        },
+                        /*colors = TextFieldDefaults.colors(
+                            focusedContainerColor = Color.White,
+                            unfocusedContainerColor = Color.White
+                        )*/
                     )
                     Button(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 20.dp),
                         onClick = {}
                     ) {
                         Text(text = "SIGN IN")
@@ -132,13 +164,13 @@ fun LoginContent() {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(vertical = 10.dp),
+                            .padding(top = 17.dp),
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Text(text = "Don't have an account?")
                         Text(
                             text = "Sign up",
-                            color = Color.Blue
+                            color = Blue700
                         )
                     }
                 }
