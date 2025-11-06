@@ -31,9 +31,12 @@ import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jorge.ecommerceaoomvvm.R
+import com.jorge.ecommerceaoomvvm.presentation.components.DefaultButton
+import com.jorge.ecommerceaoomvvm.presentation.components.DefaultTextField
 import com.jorge.ecommerceaoomvvm.ui.theme.Blue500
 import com.jorge.ecommerceaoomvvm.ui.theme.Blue700
 
@@ -91,52 +94,31 @@ fun LoginContent(paddingValues: PaddingValues) {
                         fontSize = 20.sp,
                         color = Color.Black
                     )
-                    OutlinedTextField(
+                    DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
                         value = "",
                         onValueChange = {},
-                        label = {
-                            Text(text = "E-mail")
-                        },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.Email,
-                                contentDescription = "Email Icon",
-                                tint = Blue500
-                            )
-                        },
-                        /*colors = TextFieldDefaults.colors(
-                            focusedContainerColor = Color.White,
-                            unfocusedContainerColor = Color.White
-                        )*/
+                        label = "Email",
+                        icon = Icons.Default.Email,
+                        keyboardType = KeyboardType.Email
                     )
-                    OutlinedTextField(
+                    DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
                         value = "",
                         onValueChange = {},
-                        label = {
-                            Text(text = "Password")
-                        },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.Lock,
-                                contentDescription = "Password Icon",
-                                tint = Blue500
-                            )
-                        },
-                        /*colors = TextFieldDefaults.colors(
-                            focusedContainerColor = Color.White,
-                            unfocusedContainerColor = Color.White
-                        )*/
+                        label = "Password",
+                        icon = Icons.Default.Lock,
+                        keyboardType = KeyboardType.Password
                     )
-                    Button(
+                    Spacer(modifier = Modifier.height(10.dp))
+                    DefaultButton(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = 20.dp),
-                        onClick = {}
-                    ) {
-                        Text(text = "SIGN IN")
-                    }
+                            .height(50.dp),
+                        onClick = {},
+                        text = "SIGN IN"
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
