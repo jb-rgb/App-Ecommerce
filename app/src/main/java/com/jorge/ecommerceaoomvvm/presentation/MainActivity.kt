@@ -8,10 +8,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.jorge.ecommerceaoomvvm.presentation.navigation.graph.RootNavGraph
 import com.jorge.ecommerceaoomvvm.presentation.screens.auth.login.LoginScreen
 import com.jorge.ecommerceaoomvvm.ui.theme.KotlinEcommerceMVVMTheme
 
 class MainActivity : ComponentActivity() {
+    private lateinit var navController: NavHostController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -21,7 +26,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    LoginScreen()
+                    navController = rememberNavController()
+                    RootNavGraph(navController =  navController)
                 }
             }
         }

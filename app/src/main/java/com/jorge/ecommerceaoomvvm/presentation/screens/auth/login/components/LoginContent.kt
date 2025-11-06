@@ -1,6 +1,7 @@
 package com.jorge.ecommerceaoomvvm.presentation.screens.auth.login.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,14 +35,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.jorge.ecommerceaoomvvm.R
 import com.jorge.ecommerceaoomvvm.presentation.components.DefaultButton
 import com.jorge.ecommerceaoomvvm.presentation.components.DefaultTextField
+import com.jorge.ecommerceaoomvvm.presentation.navigation.screen.AuthScreen
 import com.jorge.ecommerceaoomvvm.ui.theme.Blue500
 import com.jorge.ecommerceaoomvvm.ui.theme.Blue700
 
 @Composable
-fun LoginContent(paddingValues: PaddingValues) {
+fun LoginContent(navCrontroller: NavHostController, paddingValues: PaddingValues) {
     Box(modifier = Modifier) {
         Image(
             modifier = Modifier.fillMaxSize(),
@@ -128,6 +131,9 @@ fun LoginContent(paddingValues: PaddingValues) {
                         Text(text = "Don't have an account?")
                         Spacer(modifier = Modifier.width(6.dp))
                         Text(
+                            modifier = Modifier.clickable{
+                                navCrontroller.navigate(route = AuthScreen.Register.route)
+                            },
                             text = "Sign up",
                             color = Blue700
                         )
